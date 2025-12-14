@@ -13,18 +13,32 @@ import {
 export class QuizService {
 
     // 1. Logic Tambah Soal (Seeder)
-    static async createQuestion(req: CreateQuestionRequest): Promise<string> 
+    static async createQuestion(req:{ questions: CreateQuestionRequest[] }): Promise<string> 
     {
-        const validatedData = Validation.validate<CreateQuestionRequest>(
-            QuizValidation.CREATE_QUESTION,
-            req
+        if (!req.questions || !Array.isArray(req.questions))
+        {
+            throw new Error("Format nya salah bang, harus kirim kek gini, { questions: [ {isi data soal quiz}, {dan seterusnya} ]}")
+        }
+
+        const cleanData: CreateQuestionRequest[] = [];
+        
+        for (const item of req.questions)
+        {
+            const validatedItem = Validation.validate<CreateQuestionRequest>
+            (
+                QuizValidation.CREATE_QUESTION,
+                item
+            );
+            cleanData.push(validatedItem);
+        }
+
+        const result = await prismaClient.question.createMany(
+            {
+                data: cleanData
+            }
         );
-
-        await prismaClient.question.create({
-            data: validatedData
-        });
-
-        return "Question created successfully!";
+        
+        return `berhasil nambah ${result.count} soal baru!`;
     }
 
     // 2. Logic Ambil Semua Soal (Untuk mulai Quiz)
