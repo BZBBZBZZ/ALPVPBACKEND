@@ -5,6 +5,16 @@ const prisma = new PrismaClient();
 async function main() {
   const foods = [
     {
+      name: "Apel",
+      category: "Buah",
+      image_url:
+        "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?q=80&w=200&auto=format&fit=crop", 
+      short_desc:
+        "Apel adalah buah bulat berwarna merah, hijau, atau kuning, rasanya manis atau asam, dan kaya vitamin serta serat.",
+      food_detail_desc:
+        "Apel adalah buah yang sangat populer di seluruh dunia, dikenal dengan bentuk bulat serta warna kulit yang bervariasi, seperti merah, hijau, dan kuning. Daging buahnya renyah, berair, dan memiliki rasa manis hingga sedikit asam tergantung jenisnya. Apel kaya vitamin C, serat, serta antioksidan yang membantu menjaga kesehatan tubuh, meningkatkan daya tahan, dan memperlancar pencernaan. Buah ini sering dikonsumsi langsung, dijus, atau diolah menjadi berbagai hidangan seperti salad, kue, dan dessert.",
+    },
+    {
       name: "Bayam Hijau",
       category: "Sayuran",
       image_url:
@@ -15,7 +25,7 @@ async function main() {
         "Bayam merupakan tanaman yang biasa ditanam untuk dikonsumsi daunnya sebagai sayuran hijau. Tumbuhan ini berasal dari Amerika tropik namun sekarang tersebar ke seluruh dunia. Bayam dikenal sebagai sumber zat besi yang penting untuk tubuh. Selain itu, bayam juga mengandung vitamin A, vitamin C, dan vitamin K yang tinggi. Mengonsumsi bayam secara rutin dapat membantu meningkatkan kesehatan mata, mengurangi stres oksidatif, dan membantu mencegah kanker. Daun bayam memiliki tekstur yang lembut dan rasa yang sedikit manis jika dimasak dengan benar, membuatnya menjadi favorit banyak orang untuk menu diet sehat.",
     },
     {
-      name: "Daging Sapi Segar",
+      name: "Daging Sapi",
       category: "Daging",
       image_url:
         "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1000&auto=format&fit=crop",
@@ -45,7 +55,7 @@ async function main() {
         "Telur ayam mengandung nutrisi yang sangat padat dalam kemasan yang kecil. Bagian putih telur kaya akan protein albumin yang rendah lemak, sangat baik untuk pembentukan otot. Sementara itu, bagian kuning telur mengandung lemak sehat, vitamin A, D, E, dan K, serta kolin yang sangat penting untuk kesehatan otak dan fungsi saraf. Meskipun mengandung kolesterol, konsumsi telur dalam jumlah wajar terbukti aman bagi kesehatan jantung kebanyakan orang. Telur juga mengandung antioksidan lutein dan zeaxanthin yang bermanfaat untuk menjaga kesehatan mata dari degenerasi makula. Fleksibilitasnya dalam dunia kuliner menjadikan telur bahan wajib di setiap dapur.",
     },
     {
-      name: "Wortel Import",
+      name: "Wortel",
       category: "Sayuran",
       image_url:
         "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?q=80&w=1000&auto=format&fit=crop",
@@ -55,7 +65,7 @@ async function main() {
         "Wortel adalah jenis sayuran umbi yang menyimpan cadangan makanannya di dalam akar. Warna oranye cerah pada wortel berasal dari kandungan beta-karoten yang sangat tinggi, yang di dalam tubuh akan diubah menjadi vitamin A. Vitamin ini sangat krusial untuk menjaga kesehatan penglihatan, sistem kekebalan tubuh, dan kesehatan kulit. Selain vitamin A, wortel juga mengandung serat, vitamin K1, dan potasium. Mengonsumsi wortel secara teratur dapat membantu menurunkan kadar kolesterol darah. Wortel bisa diolah dengan berbagai cara, mulai dari dijus, direbus, dipanggang, hingga diparut untuk campuran kue seperti carrot cake yang lezat.",
     },
     {
-      name: "Dada Ayam Fillet",
+      name: "Ayam",
       category: "Daging",
       image_url:
         "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1000&auto=format&fit=crop",
@@ -68,27 +78,27 @@ async function main() {
       name: "Ikan Salmon",
       category: "Seafood",
       image_url:
-        "https://images.unsplash.com/photo-1599084993091-1e8015507bf0?q=80&w=1000&auto=format&fit=crop",
+        "https://media.istockphoto.com/id/1468279469/photo/fresh-raw-salmon-and-ingredients-for-marinade-on-light-grey-table-closeup.jpg?s=612x612&w=0&k=20&c=U2qmWEAG4mdHzrUHqfPcO4YLcK3BsFGKffhIv68Rh4o=",
       short_desc:
         "Ikan salmon adalah jenis ikan laut yang terkenal dengan dagingnya yang berwarna oranye kemerahan dan teksturnya yang lembut. Ikan ini digolongkan sebagai superfood karena kandungan asam lemak omega-3 yang sangat tinggi dan bermanfaat bagi tubuh.",
       food_detail_desc:
         "Salmon merupakan ikan berlemak (oily fish) yang hidup di perairan dingin. Kandungan utamanya yang paling dicari adalah asam lemak omega-3 (EPA dan DHA), yang terbukti secara ilmiah dapat menurunkan risiko penyakit jantung, mengurangi peradangan tubuh, dan meningkatkan fungsi otak serta memori. Selain itu, salmon juga kaya akan protein berkualitas tinggi, vitamin B kompleks (terutama B12), potasium, dan selenium. Daging salmon yang segar memiliki rasa manis alami dan tekstur yang 'buttery' atau meleleh di mulut. Ikan ini bisa dinikmati dalam keadaan mentah sebagai sashimi, dipanggang (pan-seared), atau diasap untuk memberikan aroma yang khas.",
     },
     {
-      name: "Kentang Dieng",
+      name: "Kentang",
       category: "Karbohidrat",
       image_url:
-        "https://images.unsplash.com/photo-1518977676605-dcad0231704d?q=80&w=1000&auto=format&fit=crop",
+        "https://media.istockphoto.com/id/506693913/id/foto/kentang-segar-maris-piper-stock-image.jpg?s=612x612&w=0&k=20&c=2d3D3qgtzx-GdSS99Ms_1hl_PVghCIHwJSk2WCxObcU=",
       short_desc:
         "Kentang adalah umbi-umbian yang menjadi sumber karbohidrat alternatif pengganti nasi yang sangat populer. Dengan rasa yang gurih dan tekstur empuk, kentang dapat diolah menjadi berbagai hidangan mulai dari perkedel, keripik, hingga mashed potato.",
       food_detail_desc:
         "Kentang adalah tanaman umbi batang yang berasal dari Amerika Selatan namun kini menjadi makanan pokok keempat terbesar di dunia. Umbi ini mengandung karbohidrat kompleks yang memberikan energi tahan lama. Menariknya, kulit kentang mengandung banyak serat dan nutrisi penting, sehingga disarankan untuk tidak mengupasnya jika memungkinkan. Kentang juga merupakan sumber potasium yang sangat baik, bahkan lebih tinggi daripada pisang, yang berguna untuk mengontrol tekanan darah. Selain itu, terdapat kandungan vitamin C dan B6 di dalamnya. Pati resisten dalam kentang yang telah didinginkan setelah dimasak juga baik untuk kesehatan pencernaan dan bakteri baik di usus.",
     },
     {
-      name: "Brokoli Segar",
+      name: "Brokoli",
       category: "Sayuran",
       image_url:
-        "https://images.unsplash.com/photo-1459411621453-7debff8f8432?q=80&w=1000&auto=format&fit=crop",
+        "https://media.istockphoto.com/id/166754834/photo/fresh-sprig-of-broccoli-isolated.jpg?s=612x612&w=0&k=20&c=bS2q5Ana0bg3tN7mo9nAnGnzM9q1gRRGOWKZd985Vsc=",
       short_desc:
         "Brokoli adalah sayuran hijau berbentuk seperti pohon kecil yang termasuk dalam keluarga kubis-kubisan. Sayuran ini dikenal sebagai salah satu makanan paling sehat di dunia karena kandungan antioksidan dan seratnya yang sangat tinggi.",
       food_detail_desc:
