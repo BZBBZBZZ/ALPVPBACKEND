@@ -1,10 +1,20 @@
-import express from "express"
-import { PORT } from "./utils/env-util"
+import express from "express";
+import dotenv from "dotenv";
+import { publicRouter } from "./routes/api";
+import { errorMiddleware } from "./middlewares/error-middleware";
 
-const app = express()
+dotenv.config();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json())
+const app = express();
+app.use(express.json());
 
-app.listen(PORT || 3000, () => {
-    console.log(`Connected to server on port ${PORT || 3000}`)
-})
+// Routes
+app.use("/api", publicRouter);
+
+// Error Middleware (Wajib paling bawah)
+app.use(errorMiddleware);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

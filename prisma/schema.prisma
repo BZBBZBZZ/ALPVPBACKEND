@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -8,30 +8,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int    @id @default(autoincrement())
-  username String @db.VarChar(100)
-  email    String @unique @db.VarChar(150)
-  password String @db.VarChar(100)
+model Question {
+  id             Int    @id @default(autoincrement())
+  question_text  String @db.Text
+  option_a       String @db.VarChar(255)
+  option_b       String @db.VarChar(255)
+  option_c       String @db.VarChar(255)
+  option_d       String @db.VarChar(255)
+  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd'
+  explanation    String @db.Text 
 
-  todos Todo[]
-
-  @@map("users")
+  @@map("questions")
 }
-
-model Todo {
-  id          Int    @id @default(autoincrement())
-  title       String @db.VarChar(100)
-  description String @db.Text
-  priority    String @db.VarChar(10)
-  due_date    String @db.VarChar(100)
-  status      String @db.VarChar(20)
-
-  user_id Int
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@map("todos")
-}
-
-//test 
