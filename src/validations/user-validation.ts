@@ -34,4 +34,13 @@ export class UserValidation {
                 error: "Password must contain more than or equal to 8 characters!",
             }),
     })
+
+    static readonly SUBMIT_SCORE: ZodType = z.object({
+        score: z
+            .number({
+                error: "Score must be a number!",
+            })
+            .int({ message: "Score must be integer!" })
+            .nonnegative({ message: "Score must be non-negative!" }),
+    })
 }

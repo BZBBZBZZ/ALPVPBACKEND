@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express"
+import { UserRequest } from "../models/user-request-model"
 import {
     LoginUserRequest,
     RegisterUserRequest,
@@ -28,6 +29,37 @@ export class UserController {
             res.status(200).json({
                 data: response,
             })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async submitScore(
+        req: UserRequest,
+        res: Response,
+        next: NextFunction
+    ) {
+        try {
+            if (!req.user) throw new Error("Unauthorized")
+
+            const score = (req.body && req.body.score) as number
+
+            const updated = await UserService.submitScore(req.user.user_id, score)
+
+            res.status(200).json({ data: updated })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async leaderboard(req: Request, res: Response, next: NextFunction) {
+        try {
+            const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 10
+            const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : 0
+
+            const data = await UserService.getLeaderboard(limit, offset)
+
+            res.status(200).json({ data })
         } catch (error) {
             next(error)
         }
