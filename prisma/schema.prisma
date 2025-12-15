@@ -9,27 +9,11 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String @db.VarChar(100)
-  email    String @unique @db.VarChar(150)
-  password String @db.VarChar(100)
-
-  todos Todo[]
+  user_id        Int       @id @default(autoincrement())
+  username       String    @db.VarChar(100)
+  password       String    @db.VarChar(100)
+  high_score     Int       @default(0)
+  last_played_at DateTime?
 
   @@map("users")
-}
-
-model Todo {
-  id          Int    @id @default(autoincrement())
-  title       String @db.VarChar(100)
-  description String @db.Text
-  priority    String @db.VarChar(10)
-  due_date    String @db.VarChar(100)
-  status      String @db.VarChar(20)
-
-  user_id Int
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@map("todos")
 }
