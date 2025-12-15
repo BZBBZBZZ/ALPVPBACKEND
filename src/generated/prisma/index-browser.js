@@ -122,6 +122,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
+  ingredient_id: 'ingredient_id',
   question_text: 'question_text',
   option_a: 'option_a',
   option_b: 'option_b',

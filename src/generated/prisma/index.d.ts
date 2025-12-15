@@ -875,14 +875,17 @@ export namespace Prisma {
 
   export type QuestionAvgAggregateOutputType = {
     id: number | null
+    ingredient_id: number | null
   }
 
   export type QuestionSumAggregateOutputType = {
     id: number | null
+    ingredient_id: number | null
   }
 
   export type QuestionMinAggregateOutputType = {
     id: number | null
+    ingredient_id: number | null
     question_text: string | null
     option_a: string | null
     option_b: string | null
@@ -894,6 +897,7 @@ export namespace Prisma {
 
   export type QuestionMaxAggregateOutputType = {
     id: number | null
+    ingredient_id: number | null
     question_text: string | null
     option_a: string | null
     option_b: string | null
@@ -905,6 +909,7 @@ export namespace Prisma {
 
   export type QuestionCountAggregateOutputType = {
     id: number
+    ingredient_id: number
     question_text: number
     option_a: number
     option_b: number
@@ -918,14 +923,17 @@ export namespace Prisma {
 
   export type QuestionAvgAggregateInputType = {
     id?: true
+    ingredient_id?: true
   }
 
   export type QuestionSumAggregateInputType = {
     id?: true
+    ingredient_id?: true
   }
 
   export type QuestionMinAggregateInputType = {
     id?: true
+    ingredient_id?: true
     question_text?: true
     option_a?: true
     option_b?: true
@@ -937,6 +945,7 @@ export namespace Prisma {
 
   export type QuestionMaxAggregateInputType = {
     id?: true
+    ingredient_id?: true
     question_text?: true
     option_a?: true
     option_b?: true
@@ -948,6 +957,7 @@ export namespace Prisma {
 
   export type QuestionCountAggregateInputType = {
     id?: true
+    ingredient_id?: true
     question_text?: true
     option_a?: true
     option_b?: true
@@ -1046,6 +1056,7 @@ export namespace Prisma {
 
   export type QuestionGroupByOutputType = {
     id: number
+    ingredient_id: number
     question_text: string
     option_a: string
     option_b: string
@@ -1076,6 +1087,7 @@ export namespace Prisma {
 
   export type QuestionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    ingredient_id?: boolean
     question_text?: boolean
     option_a?: boolean
     option_b?: boolean
@@ -1087,6 +1099,7 @@ export namespace Prisma {
 
   export type QuestionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    ingredient_id?: boolean
     question_text?: boolean
     option_a?: boolean
     option_b?: boolean
@@ -1098,6 +1111,7 @@ export namespace Prisma {
 
   export type QuestionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    ingredient_id?: boolean
     question_text?: boolean
     option_a?: boolean
     option_b?: boolean
@@ -1109,6 +1123,7 @@ export namespace Prisma {
 
   export type QuestionSelectScalar = {
     id?: boolean
+    ingredient_id?: boolean
     question_text?: boolean
     option_a?: boolean
     option_b?: boolean
@@ -1118,13 +1133,14 @@ export namespace Prisma {
     explanation?: boolean
   }
 
-  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "question_text" | "option_a" | "option_b" | "option_c" | "option_d" | "correct_answer" | "explanation", ExtArgs["result"]["question"]>
+  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ingredient_id" | "question_text" | "option_a" | "option_b" | "option_c" | "option_d" | "correct_answer" | "explanation", ExtArgs["result"]["question"]>
 
   export type $QuestionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Question"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      ingredient_id: number
       question_text: string
       option_a: string
       option_b: string
@@ -1556,6 +1572,7 @@ export namespace Prisma {
    */
   interface QuestionFieldRefs {
     readonly id: FieldRef<"Question", 'Int'>
+    readonly ingredient_id: FieldRef<"Question", 'Int'>
     readonly question_text: FieldRef<"Question", 'String'>
     readonly option_a: FieldRef<"Question", 'String'>
     readonly option_b: FieldRef<"Question", 'String'>
@@ -1945,6 +1962,7 @@ export namespace Prisma {
 
   export const QuestionScalarFieldEnum: {
     id: 'id',
+    ingredient_id: 'ingredient_id',
     question_text: 'question_text',
     option_a: 'option_a',
     option_b: 'option_b',
@@ -2028,6 +2046,7 @@ export namespace Prisma {
     OR?: QuestionWhereInput[]
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     id?: IntFilter<"Question"> | number
+    ingredient_id?: IntFilter<"Question"> | number
     question_text?: StringFilter<"Question"> | string
     option_a?: StringFilter<"Question"> | string
     option_b?: StringFilter<"Question"> | string
@@ -2039,6 +2058,7 @@ export namespace Prisma {
 
   export type QuestionOrderByWithRelationInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
     question_text?: SortOrder
     option_a?: SortOrder
     option_b?: SortOrder
@@ -2053,6 +2073,7 @@ export namespace Prisma {
     AND?: QuestionWhereInput | QuestionWhereInput[]
     OR?: QuestionWhereInput[]
     NOT?: QuestionWhereInput | QuestionWhereInput[]
+    ingredient_id?: IntFilter<"Question"> | number
     question_text?: StringFilter<"Question"> | string
     option_a?: StringFilter<"Question"> | string
     option_b?: StringFilter<"Question"> | string
@@ -2064,6 +2085,7 @@ export namespace Prisma {
 
   export type QuestionOrderByWithAggregationInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
     question_text?: SortOrder
     option_a?: SortOrder
     option_b?: SortOrder
@@ -2083,6 +2105,7 @@ export namespace Prisma {
     OR?: QuestionScalarWhereWithAggregatesInput[]
     NOT?: QuestionScalarWhereWithAggregatesInput | QuestionScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Question"> | number
+    ingredient_id?: IntWithAggregatesFilter<"Question"> | number
     question_text?: StringWithAggregatesFilter<"Question"> | string
     option_a?: StringWithAggregatesFilter<"Question"> | string
     option_b?: StringWithAggregatesFilter<"Question"> | string
@@ -2093,6 +2116,7 @@ export namespace Prisma {
   }
 
   export type QuestionCreateInput = {
+    ingredient_id: number
     question_text: string
     option_a: string
     option_b: string
@@ -2104,6 +2128,7 @@ export namespace Prisma {
 
   export type QuestionUncheckedCreateInput = {
     id?: number
+    ingredient_id: number
     question_text: string
     option_a: string
     option_b: string
@@ -2114,6 +2139,7 @@ export namespace Prisma {
   }
 
   export type QuestionUpdateInput = {
+    ingredient_id?: IntFieldUpdateOperationsInput | number
     question_text?: StringFieldUpdateOperationsInput | string
     option_a?: StringFieldUpdateOperationsInput | string
     option_b?: StringFieldUpdateOperationsInput | string
@@ -2125,6 +2151,7 @@ export namespace Prisma {
 
   export type QuestionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    ingredient_id?: IntFieldUpdateOperationsInput | number
     question_text?: StringFieldUpdateOperationsInput | string
     option_a?: StringFieldUpdateOperationsInput | string
     option_b?: StringFieldUpdateOperationsInput | string
@@ -2136,6 +2163,7 @@ export namespace Prisma {
 
   export type QuestionCreateManyInput = {
     id?: number
+    ingredient_id: number
     question_text: string
     option_a: string
     option_b: string
@@ -2146,6 +2174,7 @@ export namespace Prisma {
   }
 
   export type QuestionUpdateManyMutationInput = {
+    ingredient_id?: IntFieldUpdateOperationsInput | number
     question_text?: StringFieldUpdateOperationsInput | string
     option_a?: StringFieldUpdateOperationsInput | string
     option_b?: StringFieldUpdateOperationsInput | string
@@ -2157,6 +2186,7 @@ export namespace Prisma {
 
   export type QuestionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    ingredient_id?: IntFieldUpdateOperationsInput | number
     question_text?: StringFieldUpdateOperationsInput | string
     option_a?: StringFieldUpdateOperationsInput | string
     option_b?: StringFieldUpdateOperationsInput | string
@@ -2194,6 +2224,7 @@ export namespace Prisma {
 
   export type QuestionCountOrderByAggregateInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
     question_text?: SortOrder
     option_a?: SortOrder
     option_b?: SortOrder
@@ -2205,10 +2236,12 @@ export namespace Prisma {
 
   export type QuestionAvgOrderByAggregateInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
   }
 
   export type QuestionMaxOrderByAggregateInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
     question_text?: SortOrder
     option_a?: SortOrder
     option_b?: SortOrder
@@ -2220,6 +2253,7 @@ export namespace Prisma {
 
   export type QuestionMinOrderByAggregateInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
     question_text?: SortOrder
     option_a?: SortOrder
     option_b?: SortOrder
@@ -2231,6 +2265,7 @@ export namespace Prisma {
 
   export type QuestionSumOrderByAggregateInput = {
     id?: SortOrder
+    ingredient_id?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2267,16 +2302,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {

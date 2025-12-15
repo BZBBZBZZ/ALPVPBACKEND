@@ -2,6 +2,7 @@ import { Question } from "../generated/prisma";
 
 // Tipe data untuk Request bikin soal
 export interface CreateQuestionRequest {
+    ingredient_id: number;
     question_text: string;
     option_a: string;
     option_b: string;
