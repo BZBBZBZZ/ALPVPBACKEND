@@ -32,4 +32,15 @@ export class QuizController {
             next(e);
         }
     }
+
+    static async getById(req: Request, res: Response, next: NextFunction) {
+        try {
+            const id = parseInt(req.params.id, 10);
+            const response = await QuizService.getQuestionById(id);
+            res.status(200).json({ data: response });
+        } catch (e) {
+            next(e);
+        }
+    }
+
 }

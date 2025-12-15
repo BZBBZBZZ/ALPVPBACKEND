@@ -90,5 +90,16 @@ export class QuizService {
             details: details // Kirim detail pembahasan ke user
         };
     }
+
+     static async getQuestionById(id: number): Promise<QuestionResponse> {
+        const question = await prismaClient.question.findUnique({
+            where: { id }
+        });
+        if (!question) {
+            throw new Error("Soal tidak ditemukan");
+        }
+        return toQuestionResponse(question);
+    }
+
 }
 
