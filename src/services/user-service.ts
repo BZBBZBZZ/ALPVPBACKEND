@@ -123,4 +123,55 @@ export class UserService {
 
         return results
     }
+
+    static async clearAllUsers() {
+        // Use TRUNCATE to remove all rows and reset the sequence to 1.
+        // This is intended for development/testing only.
+        await prismaClient.$executeRawUnsafe('TRUNCATE TABLE "users" RESTART IDENTITY CASCADE;')
+        return { success: true }
+    }
+
+    static async bulkCreateUsers(items: Array<{
+        username: string
+        password: string
+        high_score?: number
+        last_played_at?: string
+    }>) {
+        const validated = Validation.validate(UserValidation.BULK_USERS, items)
+
+        // Hash passwords and create users sequentially to preserve input order
+        const created: any[] = []
+
+        for (const it of validated) {
+            const hashed = await bcrypt.hash(it.password, 10)
+
+            const parsedDate = it.last_played_at ? new Date(it.last_played_at) : null
+
+            const user = await prismaClient.user.create({
+                data: {
+                    username: it.username,
+                    password: hashed,
+                    high_score: it.high_score ?? 0,
+                    last_played_at: parsedDate,
+                },
+            })
+
+            created.push(user)
+        }
+
+        return created
+    }
+
+    static async deleteUsersByIds(ids: number[]) {
+        const validated = Validation.validate(UserValidation.DELETE_USERS, { user_ids: ids })
+
+        const result = await prismaClient.user.deleteMany({
+            where: {
+                user_id: { in: validated.user_ids },
+            },
+        })
+
+        // deleteMany returns { count }
+        return result
+    }
 }

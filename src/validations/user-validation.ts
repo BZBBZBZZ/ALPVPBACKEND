@@ -43,4 +43,28 @@ export class UserValidation {
             .int({ message: "Score must be integer!" })
             .nonnegative({ message: "Score must be non-negative!" }),
     })
+
+    static readonly BULK_USERS: ZodType = z.array(
+        z.object({
+            username: z
+                .string({ error: "Username must be string!" })
+                .min(1, { error: "Username can not be empty!" }),
+            password: z
+                .string({ error: "Password must be string!" })
+                .min(8, { error: "Password must contain more than or equal to 8 characters!" }),
+            high_score: z
+                .number()
+                .int()
+                .nonnegative()
+                .optional(),
+            last_played_at: z
+                .string()
+                .nullable()
+                .optional(),
+        })
+    )
+
+    static readonly DELETE_USERS: ZodType = z.object({
+        user_ids: z.array(z.number().int()).nonempty({ message: "user_ids must be a non-empty array of integers" }),
+    })
 }
