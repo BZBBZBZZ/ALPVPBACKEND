@@ -12,7 +12,7 @@ import {
 
 export class QuizService {
 
-    // 1. Logic Tambah Soal (Seeder)
+    // logic tambah soal,seeder
     static async createQuestion(req:{ questions: CreateQuestionRequest[] }): Promise<string> 
     {
         if (!req.questions || !Array.isArray(req.questions))
@@ -41,7 +41,7 @@ export class QuizService {
         return `berhasil nambah ${result.count} soal baru!`;
     }
 
-    // 2. Logic Ambil Semua Soal (Untuk mulai Quiz)
+    // logic ambil semua soal, buat mulai quiz
     static async getQuestions(): Promise<QuestionResponse[]> {
         const questions = await prismaClient.question.findMany({
             orderBy: { id: "asc" }
@@ -50,7 +50,7 @@ export class QuizService {
         return questions.map(toQuestionResponse);
     }
 
-    // 3. Logic Hitung Skor (Quiz Result)
+    // logic Hitung Skor 
     static async calculateResult(req: SubmitQuizRequest): Promise<QuizResultResponse> 
     {
         const validatedData = Validation.validate<SubmitQuizRequest>(
@@ -71,7 +71,7 @@ export class QuizService {
                 
                 if (isCorrect) correctCount++;
 
-                // Masukkan data ke details buat dikirim ke frontend
+                // masukin data detail
                 details.push({
                     question_id: realQuestion.id,
                     user_answer: userAns.answer,
@@ -87,7 +87,7 @@ export class QuizService {
             total_questions: allQuestions.length,
             correct_count: correctCount,
             score: Math.round(score),
-            details: details // Kirim detail pembahasan ke user
+            details: details // kirim detail ke user
         };
     }
 

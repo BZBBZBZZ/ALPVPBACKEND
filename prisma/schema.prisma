@@ -16,7 +16,7 @@ model Question {
   option_b       String @db.VarChar(255)
   option_c       String @db.VarChar(255)
   option_d       String @db.VarChar(255)
-  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd'
+  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd', ato gk hurufkapital
   explanation    String @db.Text 
 
   @@map("questions")

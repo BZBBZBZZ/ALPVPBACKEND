@@ -1,6 +1,6 @@
 import { Question } from "../generated/prisma";
 
-// Tipe data untuk Request bikin soal
+// tipe data untuk request bikin soal
 export interface CreateQuestionRequest {
     ingredient_id: number;
     question_text: string;
@@ -12,7 +12,7 @@ export interface CreateQuestionRequest {
     explanation: string;
 }
 
-// Response soal ke User (Kunci jawaban DIHAPUS agar user tidak bisa intip)
+// response soal ke User, ini yang ditunjukin ke user 
 export interface QuestionResponse {
     id: number;
     question_text: string;
@@ -22,7 +22,7 @@ export interface QuestionResponse {
     option_d: string;
 }
 
-// Request saat submit jawaban
+// request saat submit jawaban
 export interface SubmitQuizRequest {
     answers: {
         question_id: number;
@@ -30,6 +30,7 @@ export interface SubmitQuizRequest {
     }[];
 }
 
+// muncul di result view 
 export interface QuestionResultDetail {
     question_id: number;
     user_answer: string;
@@ -38,7 +39,7 @@ export interface QuestionResultDetail {
     explanation: string;
 } 
 
-// Response hasil akhir
+// response hasil akhir
 export interface QuizResultResponse {
     total_questions: number;
     correct_count: number;
@@ -46,7 +47,7 @@ export interface QuizResultResponse {
     details: QuestionResultDetail[];
 }
 
-// Helper convert Prisma model ke Response (hide correct_answer)
+// helper convert prisma model ke response 
 export function toQuestionResponse(q: Question): QuestionResponse {
     return {
         id: q.id,

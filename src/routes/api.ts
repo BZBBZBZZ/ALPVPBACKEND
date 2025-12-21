@@ -12,4 +12,5 @@ publicRouter.get("/quiz/start", QuizController.startQuiz);
 // 3. Result (Selesai)
 publicRouter.post("/quiz/submit", QuizController.submitQuiz);
 
-publicRouter.get("/questions/:id", QuizController.getById);
+// ambil question per id
+publicRouter.get("/questions/:id", QuizController.getById); 

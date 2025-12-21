@@ -3,7 +3,7 @@ import { CreateQuestionRequest, SubmitQuizRequest } from "../models/quiz-model";
 
 
 export class QuizValidation {
-    // Validasi saat Admin/Postman input soal baru
+    // ngevalidate pas postman input soal baru
     static readonly CREATE_QUESTION: ZodType<CreateQuestionRequest> = z.object({
         ingredient_id: z.number().positive(),
         question_text: z.string().min(1),
@@ -15,7 +15,7 @@ export class QuizValidation {
         explanation: z.string().min(1),
     });
 
-    // Validasi saat User kirim jawaban (Array of answers)
+    // ngevalidate jawaban user 
     static readonly SUBMIT_ANSWERS: ZodType<SubmitQuizRequest> = z.object({
         answers: z.array(z.object({
             question_id: z.number(),
