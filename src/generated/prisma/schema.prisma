@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id             Int    @id @default(autoincrement())
+  question_text  String @db.Text
+  option_a       String @db.VarChar(255)
+  option_b       String @db.VarChar(255)
+  option_c       String @db.VarChar(255)
+  option_d       String @db.VarChar(255)
+  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd'
+  explanation    String @db.Text
+
+  @@map("questions")
+}

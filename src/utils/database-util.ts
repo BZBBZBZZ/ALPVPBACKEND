@@ -1,3 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../generated/prisma";
 
-export const prismaClient = new PrismaClient();
+export const prismaClient = new PrismaClient({
+    errorFormat: "pretty",
+    log: ["query", "info", "warn", "error"]
+});

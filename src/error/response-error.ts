@@ -3,3 +3,7 @@ export class ResponseError extends Error {
     super(message);
   }
 }
+    constructor(public status: number, public message: string) {
+        super(message);
+    }
+}

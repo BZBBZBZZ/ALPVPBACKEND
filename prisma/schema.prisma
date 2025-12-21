@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -14,6 +15,19 @@ model Food {
   image_url        String @db.Text
   short_desc       String @db.Text
   food_detail_desc String @db.Text
+}
 
   @@map("foods")
+model Question {
+  id             Int    @id @default(autoincrement())
+  ingredient_id  Int
+  question_text  String @db.Text
+  option_a       String @db.VarChar(255)
+  option_b       String @db.VarChar(255)
+  option_c       String @db.VarChar(255)
+  option_d       String @db.VarChar(255)
+  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd', ato gk hurufkapital
+  explanation    String @db.Text 
+
+  @@map("questions")
 }
