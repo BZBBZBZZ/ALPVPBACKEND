@@ -1,4 +1,4 @@
-import { Food } from "@prisma/client";
+import { Food } from "../generated/prisma";
 
 export interface FoodResponse {
   id: number;

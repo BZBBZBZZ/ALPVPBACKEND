@@ -15,9 +15,10 @@ model Food {
   image_url        String @db.Text
   short_desc       String @db.Text
   food_detail_desc String @db.Text
-}
 
   @@map("foods")
+}
+
 model Question {
   id             Int    @id @default(autoincrement())
   ingredient_id  Int

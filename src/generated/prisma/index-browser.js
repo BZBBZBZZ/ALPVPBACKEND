@@ -120,6 +120,15 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.FoodScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  image_url: 'image_url',
+  short_desc: 'short_desc',
+  food_detail_desc: 'food_detail_desc'
+};
+
 exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   ingredient_id: 'ingredient_id',
@@ -144,6 +153,7 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
+  Food: 'Food',
   Question: 'Question'
 };
 
