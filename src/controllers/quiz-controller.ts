@@ -43,4 +43,15 @@ export class QuizController {
         }
     }
 
+    // DELETE /api/questions/:id
+    static async delete(req: Request, res: Response, next: NextFunction) {
+        try {
+            const id = parseInt(req.params.id, 10);
+            const response = await QuizService.deleteQuestion(id);
+            res.status(200).json({ data: response });
+        } catch (e) {
+            next(e);
+        }
+    }
+
 }

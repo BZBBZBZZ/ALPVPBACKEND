@@ -20,3 +20,6 @@ apiRouter.post("/quiz/submit", QuizController.submitQuiz);
 
 // ambil question per id
 apiRouter.get("/questions/:id", QuizController.getById);
+
+// hapus question per id
+apiRouter.delete("/questions/:id", QuizController.delete);

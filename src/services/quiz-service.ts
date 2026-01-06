@@ -9,6 +9,7 @@ import {
     QuestionResultDetail,
     toQuestionResponse
 } from "../models/quiz-model";
+import { ResponseError } from "../error/response-error";
 
 export class QuizService {
 
@@ -105,6 +106,22 @@ export class QuizService {
             throw new Error("Soal tidak ditemukan");
         }
         return toQuestionResponse(question);
+    }
+
+ static async deleteQuestion(id: number): Promise<string> {
+        const question = await prismaClient.question.findUnique({
+            where: { id }
+        });
+
+        if (!question) {
+            throw new ResponseError(404, "Soal tidak ditemukan!");
+        }
+
+        await prismaClient.question.delete({
+            where: { id }
+        });
+
+        return "Soal berhasil dihapus";
     }
 
 }
