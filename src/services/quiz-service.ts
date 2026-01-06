@@ -52,7 +52,6 @@ export class QuizService {
     }
 
     // logic Hitung Skor 
-   // 3. Logic Hitung Skor (Quiz Result)
     static async calculateResult(req: SubmitQuizRequest): Promise<QuizResultResponse> 
     {
         const validatedData = Validation.validate<SubmitQuizRequest>(
@@ -69,32 +68,27 @@ export class QuizService {
             const realQuestion = allQuestions.find(q => q.id === userAns.question_id);
             
             if (realQuestion) {
-                // === PERBAIKAN DISINI ===
-                // Kita paksa keduanya jadi huruf kecil biar "A" dianggap sama dengan "a"
-                const isCorrect = realQuestion.correct_answer.toLowerCase() === userAns.answer.toLowerCase();
+                const isCorrect = realQuestion.correct_answer === userAns.answer;
                 
                 if (isCorrect) correctCount++;
 
-                // Masukkan data ke details buat dikirim ke frontend
+                // masukin data detail
                 details.push({
                     question_id: realQuestion.id,
                     user_answer: userAns.answer,
                     correct_answer: realQuestion.correct_answer,
                     is_correct: isCorrect,
-                    explanation: realQuestion.explanation
+                    explanation: realQuestion.explanation // <--- INI DIA
                 });
             }
         }
-        
-        // Mencegah pembagian dengan nol jika tidak ada soal
-        const totalQ = allQuestions.length > 0 ? allQuestions.length : 1;
-        const score = (correctCount / totalQ) * 100;
+        const score = (correctCount / allQuestions.length) * 100;
 
-        return {
+       return {
             total_questions: allQuestions.length,
             correct_count: correctCount,
             score: Math.round(score),
-            details: details
+            details: details // kirim detail ke user
         };
     }
 
