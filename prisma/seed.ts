@@ -121,6 +121,13 @@ async function main() {
   const p1 = await bcrypt.hash('password123', 10);
   const p2 = await bcrypt.hash('secret456', 10);
   const p3 = await bcrypt.hash('hunter2', 10);
+  const p4 = await bcrypt.hash('demo123', 10);
+  const p5 = await bcrypt.hash('test456', 10);
+  const p6 = await bcrypt.hash('user789', 10);
+  const p7 = await bcrypt.hash('pass123', 10);
+  const p8 = await bcrypt.hash('quiz456', 10);
+  const p9 = await bcrypt.hash('food789', 10);
+  const p10 = await bcrypt.hash('sample123', 10);
 
   // upsert users (safe to re-run)
   await prisma.user.upsert({
@@ -139,6 +146,48 @@ async function main() {
     where: { username: "charlie" },
     update: { password: p3, high_score: 95, last_played_at: now },
     create: { username: "charlie", password: p3, high_score: 95, last_played_at: now },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "david" },
+    update: { password: p4, high_score: 70, last_played_at: new Date(now.getTime() - 5 * oneDay) },
+    create: { username: "david", password: p4, high_score: 70, last_played_at: new Date(now.getTime() - 5 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "emma" },
+    update: { password: p5, high_score: 90, last_played_at: new Date(now.getTime() - 3 * oneDay) },
+    create: { username: "emma", password: p5, high_score: 90, last_played_at: new Date(now.getTime() - 3 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "frank" },
+    update: { password: p6, high_score: 85, last_played_at: new Date(now.getTime() - 4 * oneDay) },
+    create: { username: "frank", password: p6, high_score: 85, last_played_at: new Date(now.getTime() - 4 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "grace" },
+    update: { password: p7, high_score: 75, last_played_at: new Date(now.getTime() - 6 * oneDay) },
+    create: { username: "grace", password: p7, high_score: 75, last_played_at: new Date(now.getTime() - 6 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "henry" },
+    update: { password: p8, high_score: 88, last_played_at: new Date(now.getTime() - 7 * oneDay) },
+    create: { username: "henry", password: p8, high_score: 88, last_played_at: new Date(now.getTime() - 7 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "iris" },
+    update: { password: p9, high_score: 92, last_played_at: new Date(now.getTime() - 8 * oneDay) },
+    create: { username: "iris", password: p9, high_score: 92, last_played_at: new Date(now.getTime() - 8 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "jack" },
+    update: { password: p10, high_score: 78, last_played_at: new Date(now.getTime() - 9 * oneDay) },
+    create: { username: "jack", password: p10, high_score: 78, last_played_at: new Date(now.getTime() - 9 * oneDay) },
   });
 }
 
