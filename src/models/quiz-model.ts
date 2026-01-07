@@ -33,6 +33,7 @@ export interface SubmitQuizRequest {
 // muncul di result view 
 export interface QuestionResultDetail {
     question_id: number;
+    question_text: string; // <--- SUDAH DITAMBAHKAN (SOLUSI BIAR GAK MERAH)
     user_answer: string;
     correct_answer: string;
     is_correct: boolean;

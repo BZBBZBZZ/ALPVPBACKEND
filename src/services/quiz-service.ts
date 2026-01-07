@@ -68,21 +68,26 @@ export class QuizService {
             const realQuestion = allQuestions.find(q => q.id === userAns.question_id);
             
             if (realQuestion) {
-                const isCorrect = realQuestion.correct_answer === userAns.answer;
+                // Logic cek jawaban (pakai toLowerCase biar aman)
+                const isCorrect = realQuestion.correct_answer.toLowerCase() === userAns.answer.toLowerCase();
                 
                 if (isCorrect) correctCount++;
 
                 // masukin data detail
                 details.push({
                     question_id: realQuestion.id,
+                    question_text: realQuestion.question_text, // <--- INI SUDAH TIDAK AKAN MERAH LAGI
                     user_answer: userAns.answer,
                     correct_answer: realQuestion.correct_answer,
                     is_correct: isCorrect,
-                    explanation: realQuestion.explanation // <--- INI DIA
+                    explanation: realQuestion.explanation
                 });
             }
         }
-        const score = (correctCount / allQuestions.length) * 100;
+        
+        // Mencegah pembagian dengan nol
+        const totalQ = allQuestions.length > 0 ? allQuestions.length : 1;
+        const score = (correctCount / totalQ) * 100;
 
        return {
             total_questions: allQuestions.length,
@@ -102,7 +107,7 @@ export class QuizService {
         return toQuestionResponse(question);
     }
 
- static async deleteQuestion(id: number): Promise<string> {
+    static async deleteQuestion(id: number): Promise<string> {
         const question = await prismaClient.question.findUnique({
             where: { id }
         });
@@ -119,4 +124,3 @@ export class QuizService {
     }
 
 }
-
