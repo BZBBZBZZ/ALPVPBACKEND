@@ -17,6 +17,7 @@ export class QuizValidation {
 
     // ngevalidate jawaban user 
     static readonly SUBMIT_ANSWERS: ZodType<SubmitQuizRequest> = z.object({
+        username: z.string().optional(),
         answers: z.array(z.object({
             question_id: z.number(),
             answer: z.string()
