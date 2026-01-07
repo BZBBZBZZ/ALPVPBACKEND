@@ -154,7 +154,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "c:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\src\\generated\\prisma",
+      "value": "C:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -168,7 +168,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "c:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
