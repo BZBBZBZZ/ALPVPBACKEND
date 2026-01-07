@@ -113,6 +113,14 @@ exports.Prisma.QuestionScalarFieldEnum = {
   explanation: 'explanation'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  user_id: 'user_id',
+  username: 'username',
+  password: 'password',
+  high_score: 'high_score',
+  last_played_at: 'last_played_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -123,10 +131,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Food: 'Food',
-  Question: 'Question'
+  Question: 'Question',
+  User: 'User'
 };
 /**
  * Create the Client
@@ -139,7 +153,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\src\\generated\\prisma",
+      "value": "c:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -153,7 +167,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\prisma\\schema.prisma",
+    "sourceFilePath": "c:\\Users\\asus\\Documents\\GitHub\\ALP-VisualProgramming\\ALPVPBACKEND\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -167,7 +181,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -176,13 +189,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Food {\n  id               Int    @id @default(autoincrement())\n  name             String @db.VarChar(100)\n  category         String @db.VarChar(50)\n  image_url        String @db.Text\n  short_desc       String @db.Text\n  food_detail_desc String @db.Text\n\n  @@map(\"foods\")\n}\n\nmodel Question {\n  id             Int    @id @default(autoincrement())\n  ingredient_id  Int\n  question_text  String @db.Text\n  option_a       String @db.VarChar(255)\n  option_b       String @db.VarChar(255)\n  option_c       String @db.VarChar(255)\n  option_d       String @db.VarChar(255)\n  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd', ato gk hurufkapital\n  explanation    String @db.Text\n\n  @@map(\"questions\")\n}\n",
-  "inlineSchemaHash": "3d0a6bc68668da237204b26a7dec3f8c6b37cf19e9bba3abea666d215371e9f1",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Food {\n  id               Int    @id @default(autoincrement())\n  name             String @db.VarChar(100)\n  category         String @db.VarChar(50)\n  image_url        String @db.Text\n  short_desc       String @db.Text\n  food_detail_desc String @db.Text\n\n  @@map(\"foods\")\n}\n\nmodel Question {\n  id             Int    @id @default(autoincrement())\n  ingredient_id  Int\n  question_text  String @db.Text\n  option_a       String @db.VarChar(255)\n  option_b       String @db.VarChar(255)\n  option_c       String @db.VarChar(255)\n  option_d       String @db.VarChar(255)\n  correct_answer String @db.Char(1) // 'a', 'b', 'c', atau 'd', ato gk hurufkapital\n  explanation    String @db.Text\n\n  @@map(\"questions\")\n}\n\nmodel User {\n  user_id        Int       @id @default(autoincrement())\n  username       String    @unique @db.VarChar(100)\n  password       String    @db.VarChar(255)\n  high_score     Int       @default(0)\n  last_played_at DateTime?\n\n  @@map(\"users\")\n}\n",
+  "inlineSchemaHash": "758d5c9308fa272880053aed4a5c387e9142652f2f852ed5ceee74e6cdd1f48f",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Food\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image_url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"short_desc\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"food_detail_desc\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"foods\"},\"Question\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ingredient_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"question_text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_a\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_b\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_c\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_d\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"correct_answer\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"explanation\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"questions\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Food\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image_url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"short_desc\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"food_detail_desc\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"foods\"},\"Question\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ingredient_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"question_text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_a\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_b\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_c\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"option_d\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"correct_answer\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"explanation\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"questions\"},\"User\":{\"fields\":[{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"high_score\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"last_played_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"users\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

@@ -111,6 +111,35 @@ async function main() {
       data: food,
     });
   }
+
+  // seed some users for leaderboard testing
+  const now = new Date();
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  // hash passwords for sample users
+  const bcrypt = await import('bcrypt');
+  const p1 = await bcrypt.hash('password123', 10);
+  const p2 = await bcrypt.hash('secret456', 10);
+  const p3 = await bcrypt.hash('hunter2', 10);
+
+  // upsert users (safe to re-run)
+  await prisma.user.upsert({
+    where: { username: "alice" },
+    update: { password: p1, high_score: 80, last_played_at: new Date(now.getTime() - 2 * oneDay) },
+    create: { username: "alice", password: p1, high_score: 80, last_played_at: new Date(now.getTime() - 2 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "bob" },
+    update: { password: p2, high_score: 80, last_played_at: new Date(now.getTime() - 1 * oneDay) },
+    create: { username: "bob", password: p2, high_score: 80, last_played_at: new Date(now.getTime() - 1 * oneDay) },
+  });
+
+  await prisma.user.upsert({
+    where: { username: "charlie" },
+    update: { password: p3, high_score: 95, last_played_at: now },
+    create: { username: "charlie", password: p3, high_score: 95, last_played_at: now },
+  });
 }
 
 main()
