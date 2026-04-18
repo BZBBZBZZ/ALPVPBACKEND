@@ -141,6 +141,14 @@ exports.Prisma.QuestionScalarFieldEnum = {
   explanation: 'explanation'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  user_id: 'user_id',
+  username: 'username',
+  password: 'password',
+  high_score: 'high_score',
+  last_played_at: 'last_played_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -151,10 +159,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Food: 'Food',
-  Question: 'Question'
+  Question: 'Question',
+  User: 'User'
 };
 
 /**

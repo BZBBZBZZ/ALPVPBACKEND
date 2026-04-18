@@ -111,7 +111,6 @@ async function main() {
       data: food,
     });
   }
-<<<<<<< HEAD
 
   // seed some users for leaderboard testing
   const now = new Date();
@@ -190,8 +189,6 @@ async function main() {
     update: { password: p10, high_score: 78, last_played_at: new Date(now.getTime() - 9 * oneDay) },
     create: { username: "jack", password: p10, high_score: 78, last_played_at: new Date(now.getTime() - 9 * oneDay) },
   });
-=======
->>>>>>> parent of fdecd33 (user and leaderboard complete)
 }
 
 main()
