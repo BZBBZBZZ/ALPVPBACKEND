@@ -9,8 +9,11 @@ import {
     QuestionResultDetail,
     toQuestionResponse
 } from "../models/quiz-model";
+<<<<<<< HEAD
 import { ResponseError } from "../error/response-error";
 import { UserService } from "./user-service";
+=======
+>>>>>>> parent of fdecd33 (user and leaderboard complete)
 
 export class QuizService {
 
@@ -87,18 +90,11 @@ export class QuizService {
         }
 
         const score = (correctCount / allQuestions.length) * 100;
-        const roundedScore = Math.round(score);
-
-        // update leaderboard if username provided
-        if (validatedData.username) {
-            // upsert or update user result
-            await UserService.upsertResult(validatedData.username, roundedScore, new Date());
-        }
 
        return {
             total_questions: allQuestions.length,
             correct_count: correctCount,
-            score: roundedScore,
+            score: Math.round(score),
             details: details // kirim detail ke user
         };
     }

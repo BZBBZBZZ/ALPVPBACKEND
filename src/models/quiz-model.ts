@@ -24,7 +24,6 @@ export interface QuestionResponse {
 
 // request saat submit jawaban
 export interface SubmitQuizRequest {
-    username?: string; // optional, include to record score in leaderboard
     answers: {
         question_id: number;
         answer: string;
