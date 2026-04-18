@@ -153,13 +153,9 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-<<<<<<< HEAD
 
       "value": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/src/generated/prisma",
 
-=======
-      "value": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\src\\generated\\prisma",
->>>>>>> parent of 0f3743e (generated prisma)
       "fromEnvVar": null
     },
     "config": {
@@ -168,18 +164,14 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-<<<<<<< HEAD
 
     "sourceFilePath": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/prisma/schema.prisma",
 
-=======
-    "sourceFilePath": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\prisma\\schema.prisma",
->>>>>>> parent of 0f3743e (generated prisma)
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -193,7 +185,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
