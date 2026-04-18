@@ -154,9 +154,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-
       "value": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/src/generated/prisma",
-
       "fromEnvVar": null
     },
     "config": {
@@ -170,9 +168,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-
     "sourceFilePath": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/prisma/schema.prisma",
-
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
