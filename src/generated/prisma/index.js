@@ -154,9 +154,13 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
+<<<<<<< HEAD
 
       "value": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/src/generated/prisma",
 
+=======
+      "value": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\src\\generated\\prisma",
+>>>>>>> parent of 0f3743e (generated prisma)
       "fromEnvVar": null
     },
     "config": {
@@ -165,14 +169,18 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
+<<<<<<< HEAD
 
     "sourceFilePath": "/Users/nicho/Downloads/Visprog/afl3/ALPVPBACKEND/prisma/schema.prisma",
 
+=======
+    "sourceFilePath": "C:\\Users\\Dave Sachio Usanto\\OneDrive\\Documents\\GitHub\\ALPVPBACKEND\\prisma\\schema.prisma",
+>>>>>>> parent of 0f3743e (generated prisma)
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -186,6 +194,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -234,8 +243,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
-path.join(process.cwd(), "src/generated/prisma/libquery_engine-darwin-arm64.dylib.node")
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "src/generated/prisma/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "src/generated/prisma/schema.prisma")
